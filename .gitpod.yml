@@ -3,7 +3,7 @@ image:
 
 ports:
   - port: 3000
-    onOpen: ignore
+    onOpen: open-browser
   - port: 3035
     onOpen: ignore
   - port: 5432
@@ -12,16 +12,13 @@ ports:
     onOpen: ignore
 
 tasks:
-  - name: Stellar toolkit
+  - name: Rails server
     before: |
       redis-server &
     init: >
       gem install foreman solargraph &&
       bin/setup
     command: >
-      bin/dev
+      if [ -f package.json ] then [ yarn install && bin/dev ] || bin/dev
   - command: >
-      gp await-port 3000 &&
-      printf "Waiting for server launch ..." &&
-      until $(curl -sNL $(gp url 3000) | grep -q "Rails"); do printf '.'; sleep 5; done && echo "" &&
-      gp preview $(gp url 3000)
+      printf "To open preview (cmd+) click here:  $(gp url 3000)\n"
