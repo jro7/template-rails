@@ -1,0 +1,27 @@
+image:
+  file: .gitpod.Dockerfile
+
+ports:
+  - port: 3000
+    onOpen: ignore
+  - port: 3035
+    onOpen: ignore
+  - port: 5432
+    onOpen: ignore
+  - port: 6379
+    onOpen: ignore
+
+tasks:
+  - name: Stellar toolkit
+    before: |
+      redis-server &
+    init: >
+      gem install foreman solargraph &&
+      bin/setup
+    command: >
+      bin/dev
+  - command: >
+      gp await-port 3000 &&
+      printf "Waiting for server launch ..." &&
+      until $(curl -sNL $(gp url 3000) | grep -q "Rails"); do printf '.'; sleep 5; done && echo "" &&
+      gp preview $(gp url 3000)
