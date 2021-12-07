@@ -1,4 +1,4 @@
-# Template to start a new Rails 7 (alfa) project
+# Template to start a new Rails 7 (rc1) project
 I wanted a relatively quick way to start a new Ruby on Rails project, without the need to setup my local machine with all the correct versions of Ruby & gems.
 
 The rails new command installs Rails with support for Postgresql, Tailwind CSS and esbuild.
