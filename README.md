@@ -9,10 +9,16 @@ Main addition was editing in Gitpod.
 
 # Usage
 1. clone repository or click on [Use this template](https://github.com/jro7/template-rails/generate)
-1. edit new repository in Gitpod (ie. https://gitpod.io/#https://github.com/<your_username>/<your_repository>)
-  - Gitpod automatically recognizes the Dockerfile and does a bundle install, if the following command fails, run `bundle install` first
-1. run `bundle exec rails new . --javascript esbuild --css tailwind --database postgresql -T`
-  - You can choose to answer yes/all to "overwrite the following file(s)", since it's in git ;). But don't forget you will need to add the gitpod setting below
+2. edit new repository in Gitpod (ie. https://gitpod.io/#https://github.com/<your_username>/<your_repository>)
+
+   *Gitpod automatically recognizes the Dockerfile and does a bundle install, if the following command fails, run `bundle install` first*
+3. create your new rails environment, example commands: 
+   1.  basic rails with TailwindCSS and importmaps(default):  
+   `bundle exec rails new . --css tailwind --database postgresql`
+   2.  or more custom for example TailwindCSS, esbuild and no tests:  
+   `bundle exec rails new . --javascript esbuild --css tailwind --database postgresql -T`
+
+  *You can choose to answer yes/all to "overwrite the following file(s)", since it's in git ;). But don't forget you will need to add the gitpod setting below if you want to preview the app straight from Gitpod*
 
 
 # Start
